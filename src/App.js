@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+
+import Toggle from './Toggle'
+import Card from './Card.jsx'
+import UsersList from './UsersList';
+
+import useUsers from './useUsers';
 
 
 // keep track of a variable showContent : <Boolean>
@@ -8,15 +14,24 @@ import './App.css';
 
 // condtionially render some content based on the new state variable
 
+/**
+* updateShow  = () => this.setState({ key: value })  < setter
+* const { key } = this.state
+*/
+
 
 function App() {
-  return (
-  <div class="App">
+  const {data: users, loading, error} = useUsers()
+  const [count, setCount] = useState(0);
 
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro at, itaque eos facere blanditiis unde similique laboriosam ipsa, delectus tempore magni corporis doloremque quia omnis velit enim totam atque dolor ut nulla, sit voluptas perspiciatis? Maiores voluptas non enim iure perferendis explicabo, quam odit praesentium facilis minima blanditiis placeat rem!
-    </div>
-    <button>Show/Hide</button>
+  return (
+  <div className="App">
+    <Toggle>
+      <UsersList users={users}
+      loading={loading}
+      //setUsers={setUsers}
+      count={count} setCount={setCount}/>
+    </Toggle>
   </div>
   );
 }
