@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 
 import Toggle from './Toggle'
-import Card from './Card.jsx'
 import UsersList from './UsersList';
 
 import useUsers from './useUsers';
@@ -21,7 +20,9 @@ import useUsers from './useUsers';
 
 
 function App() {
-  const {data: users, loading, error} = useUsers()
+  // This is a custom hook we wrote, see useUsers.jsx
+  // it returns an object {users:[], loading: Boolean, error: String}
+  const {users, loading, error} = useUsers()
   const [count, setCount] = useState(0);
 
   return (
@@ -29,7 +30,6 @@ function App() {
     <Toggle>
       <UsersList users={users}
       loading={loading}
-      //setUsers={setUsers}
       count={count} setCount={setCount}/>
     </Toggle>
   </div>

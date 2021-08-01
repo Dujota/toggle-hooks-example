@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { usersIndex } from './userService'
+import React, { useEffect } from 'react'
 
-import useUsers from './useUsers'
+
+
 import Card from './Card'
 import Toggle from './Toggle'
 
@@ -10,13 +10,10 @@ import Toggle from './Toggle'
 // when the fn returns data, we set that to state
 // once state updates, we render the list on the page
 
-export default function UsersList({setUsers, users,loading,  count, setCount}) {
-  // const [loading, setLoading] = useState(true)
+export default function UsersList({ users, loading}) {
+
   // when comp mounts fetch data
-
-// use effect 1 argument is CDM + CDU
-
-
+  // This useEffect was moved into a custom hook, it still does the exact same thing
   // useEffect(
   //   async () => {
   //     console.log("Component Did Mount")
@@ -28,10 +25,10 @@ export default function UsersList({setUsers, users,loading,  count, setCount}) {
   //   },[]
   // )
 
-  // const {loading, error, data} = useUsers()
-
   useEffect(
     ()=>{
+      // This effect is triggered when the users prop updates
+      // this is a component did update for only users changes
       if(users.length){
         console.log('USERS LOADED!!!!', users)
       }

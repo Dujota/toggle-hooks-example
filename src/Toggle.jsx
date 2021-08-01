@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 
-
-
 export default function Toggle(props) {
   const [show, setShow] = useState(false);
 
